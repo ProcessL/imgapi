@@ -1,9 +1,12 @@
 from flask import Flask, request, jsonify
+import os
 import api.changebg as changebg
 import api.changecloth as changecloth
 import api.expand as expand
 import api.fix as fix
 import api.koutu as koutu
+import config
+
 app = Flask(__name__)
 
 
@@ -89,4 +92,4 @@ def run_koutu():
         return jsonify({"error": str(e)}), 500
         
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(host=config.SERVER_HOST, port=config.SERVER_PORT, debug=config.DEBUG_MODE)

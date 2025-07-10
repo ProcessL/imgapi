@@ -1,14 +1,16 @@
 # -*- coding: utf-8 -*-
 # 引入依赖包
 # pip install alibabacloud_imageseg20191230
-
 import os
 from urllib.request import urlopen
 from alibabacloud_imageseg20191230.client import Client
 from alibabacloud_imageseg20191230.models import SegmentCommonImageAdvanceRequest
 from alibabacloud_tea_openapi.models import Config
 from alibabacloud_tea_util.models import RuntimeOptions
-
+import sys
+# 添加项目根目录到Python路径
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+import config
 
 def perform_image_segmentation(image_url):
     """
@@ -18,8 +20,8 @@ def perform_image_segmentation(image_url):
     """
 
     # 检查环境变量
-    access_key_id = os.environ.get('ALIBABA_CLOUD_ACCESS_KEY_ID')
-    access_key_secret = os.environ.get('ALIBABA_CLOUD_ACCESS_KEY_SECRET')
+    access_key_id = config.ALIBABA_CLOUD_ACCESS_KEY_ID
+    access_key_secret = config.ALIBABA_CLOUD_ACCESS_KEY_SECRET
     if not access_key_id or not access_key_secret:
         return {"error": "缺少 ALIBABA_CLOUD_ACCESS_KEY_ID 或 ALIBABA_CLOUD_ACCESS_KEY_SECRET 环境变量"}
 

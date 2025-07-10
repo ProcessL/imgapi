@@ -2,9 +2,12 @@ import requests
 import json
 import os
 import time
-
+import sys
 # 设置API Key
-api_key = os.getenv("DASHSCOPE_API_KEY")
+# 添加项目根目录到Python路径
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+import config
+api_key = config.DASHSCOPE_API_KEY
 if not api_key:
     raise Exception("请设置DASHSCOPE_API_KEY环境变量")
 

@@ -1,8 +1,13 @@
 import os
+import sys
 import requests
 from pathlib import Path
 import json
 from PIL import Image
+
+# 添加项目根目录到Python路径
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+import config
 
 def get_upload_policy(api_key, model_name):
     url = "https://dashscope.aliyuncs.com/api/v1/uploads"
@@ -121,7 +126,7 @@ def upload_images_in_directory(api_key, model_name, directory_path, auto_resize=
     return result_file
 
 if __name__ == "__main__":
-    api_key = os.getenv("DASHSCOPE_API_KEY")   
+    api_key = config.DASHSCOPE_API_KEY   
     model_name = "qwen-vl-plus"
     folder_path = r"C:\Users\pony\Desktop\mine\imgapi\tmp\changebg"
     

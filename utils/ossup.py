@@ -1,10 +1,15 @@
 import os
+import sys
 import alibabacloud_oss_v2 as oss
 
-# 用户配置
-region = 'cn-shenzhen'
-endpoint = 'https://oss-cn-shenzhen.aliyuncs.com'
-bucket_name = 'myl11'
+# 添加项目根目录到Python路径
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+import config
+
+# 从配置文件获取OSS配置
+region = config.OSS_REGION
+endpoint = config.OSS_ENDPOINT
+bucket_name = config.OSS_BUCKET_NAME
 object_key = 'test.png'  # 上传后 OSS 上的文件名
 local_file_path = r'tmp\changebg\test.png'  # 本地文件路径
 

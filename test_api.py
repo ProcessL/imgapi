@@ -2,8 +2,8 @@ import asyncio
 import aiohttp
 
 # 本地 Flask 服务地址
-#base_url = "http://127.0.0.1:5000"
-base_url = "http://43.100.21.199:5000"
+base_url = "http://127.0.0.1:5000"
+# base_url = "http://43.100.21.199:5000"
 
 
 async def async_test_changebg(session):
@@ -85,8 +85,8 @@ async def main():
         tasks = [
             # async_test_changebg(session),
             # async_test_changecloth(session),
-            # async_test_expand(session),
-             async_test_fix(session),
+            async_test_expand(session),
+            #  async_test_fix(session),
             # async_test_koutu(session)
         ]
         # 并发执行所有任务（无需等待前一个完成）
